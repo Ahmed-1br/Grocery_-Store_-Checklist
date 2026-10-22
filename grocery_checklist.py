@@ -1,12 +1,20 @@
 """
+Program: Grocery Store Checklist
+Author: Ahmed Ibrahim
+Date: October 21, 2026
+
+Purpose:
 Grocery Store Checklist
 A Python program that helps people manage
-their grocery shopping list"""
+their grocery shopping list
+
+Resources:
+Python 3 standard library"""
 
 def main():
+    """Displays the grocery menu and process people's choices."""
     grocery_list = []
     purchased_items = []
-    """Displays the grocery menu and process people's choices."""
     while True:
         print("---------------------------")
         print("Grocery Store Checklist")
@@ -22,12 +30,15 @@ def main():
 
         choice = input("\nChoose an option from the menu (1-6): ")
         if choice == "1":
-            item = input("Enter the grocery item to add: ")
-            if item:
+            item = input("Enter the grocery item to add: ").strip()
+
+            if not item:
+                print("No item entered.")
+            elif item.lower() in [name.lower() for name in grocery_list]:
+                print("This item is already on your grocery list.")
+            else:
                 grocery_list.append(item)
                 print(f"Added {item} to the grocery list.")
-            else:
-                print("No item entered.")
         elif choice == "2":
             if grocery_list:
                 print("\nYOUR GROCERY LIST")
