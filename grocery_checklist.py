@@ -5,6 +5,7 @@ their grocery shopping list"""
 
 def main():
     grocery_list = []
+    purchased_items = []
     """Displays the grocery menu and process people's choices."""
     while True:
         print("---------------------------")
@@ -36,11 +37,74 @@ def main():
             else:
                 print("Your grocery list is empty.")
         elif choice == "3":
-            print("You selected Mark item as purchased.")
+            if grocery_list:
+                print("\nGROCERY ITEMS")
+
+                for number, item in enumerate(grocery_list, start=1):
+                    print(f"{number}. {item}")
+
+                selection = input("Enter item number purchased: ")
+
+                if selection.isdigit():
+                    index = int(selection) - 1
+
+                    if 0 <= index < len(grocery_list):
+                        item = grocery_list[index]
+
+                        if item not in purchased_items:
+                            purchased_items.append(item)
+                            print(f"{item} marked as purchased!")
+                        else:
+                            print("This item is already purchased.")
+                    else:
+                        print("Invalid item number.")
+                else:
+                    print("Please enter a valid number.")
+            else:
+                print("Your grocery list is empty.")
         elif choice == "4":
-            print("You selected Remove grocery item.")
+            if grocery_list:
+                print("\nREMOVE GROCERY ITEM")
+
+                for number, item in enumerate(grocery_list, start=1):
+                    print(f"{number}. {item}")
+
+                selection = input("Enter item number to remove: ")
+
+                if selection.isdigit():
+                    index = int(selection) - 1
+
+                    if 0 <= index < len(grocery_list):
+                        item = grocery_list.pop(index)
+                        if item in purchased_items:
+                            purchased_items.remove(item)
+                        print(f"Removed {item} from the grocery list.")
+                    else:
+                        print("Invalid item number.")
+                else:
+                    print("Please enter a valid number.")
+            else:
+                print("Your grocery list is empty.")
         elif choice == "5":
-            print("You selected View shopping summary.")
+            if grocery_list:
+                print("\nSHOPPING SUMMARY")
+
+                for number, item in enumerate(grocery_list, start=1):
+                    status = "Purchased" if item in purchased_items else "Not purchased"
+                    print(f"{number}. {item} - {status}")
+
+                total_items = len(grocery_list)
+                purchased_count = sum(
+                    1 for item in grocery_list
+                    if item in purchased_items
+                    )
+                remaining = total_items - purchased_count
+
+                print(f"Total items: {total_items}")
+                print(f"Purchased: {purchased_count}")
+                print(f"Remaining: {remaining}")
+            else:
+                print("Your grocery list is empty.")
         elif choice == "6":
             print("Exiting the program. Goodbye!")
             break
