@@ -1,0 +1,75 @@
+Project 2 Video: Add your new unlisted youtube link here
+
+# Grocery Store Checklist
+
+**Author:** Ahmed Ibrahim
+**Project 2 - Chapters 8-11**
+**Option A:** Refactor of my original Project 1.
+
+## Project Overview
+This Python program helps people manage a grocery shopping list.
+For Project 2, I separated the original program into modules, added 
+a class, added JSON saving and loading , and created automated tests.
+
+## Features
+- Add grocery items
+- reject blank names and duplicate items regardless of capitalization.
+- View numbered items and their purchased status.
+- Mark items as purchased
+- Reomve items
+- View total, purchased, and remaining counts.
+- Automatically save after changes
+- Restore saved items when the program starts.
+- Handle invalid input and report file errors.
+
+## How to Run
+1. Install Python 3.
+2. Open the project folder in VS Code.
+3. Open the terminal.
+4. Run:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+```
+
+Start the program:
+
+```bash
+python grocery_checklist.py
+```
+
+## Testing
+
+Run the automated tests:
+
+```bash
+python -m pytest -q
+```
+
+All 11 tests passed
+
+## Python Concepts Used
+- Functions, arguments, and return values
+- Separate modules
+- Classes, objects, attributes, and methods
+- File reading and writing
+- JSON saving and loading
+- Exception handling
+- Automated testing with pytest
+
+## File Organization
+
+- grocery_checklist.py: Menu and user input
+- shopping_list.py: Class that manages grocery items
+- storage.py: Saves and loads grocery data
+- test_shopping_list.py: Automated tests
+
+## Design 
+
+I separated the menu, list management, and storage to make the program easier to maintain and test. Inheritance was unnecessary because the program only needs one type of shopping list.
+
+## Presentation Slides
+
+The slides are shown during the Project 2 video
